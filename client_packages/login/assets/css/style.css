@@ -1,0 +1,8 @@
+html body {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+body .container {
+    margin-top:13%;
+    max-width: 600px;
+}

@@ -1,0 +1,23 @@
+{
+  "name": "ragemp-mysql-template",
+  "version": "1.0.0",
+  "description": "Modules for the RageMP MySQL template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrPancakers/ragemp-mysql-template.git"
+  },
+  "author": "MrPancakers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrPancakers/ragemp-mysql-template/issues"
+  },
+  "homepage": "https://github.com/MrPancakers/ragemp-mysql-template#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "mysql": "^2.15.0"
+  }
+}

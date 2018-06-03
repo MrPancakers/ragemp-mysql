@@ -1,0 +1,16 @@
+
+bt\.dat
+
+client_packages/\.listcache
+
+conf\.json
+
+node\.dll
+
+node_modules/
+
+plugins/bridge\.dll
+
+server\.exe
+
+\.vscode/
