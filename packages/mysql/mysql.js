@@ -48,26 +48,30 @@ mp.events.add("sendDataToServer", (player, username, pass, state) => {
     switch(state){
         case 0: //Login State
         {
-            if(player.logged != 1){ //Not working
-                gm.mysql.handle.query('SELECT `password` FROM `accounts` WHERE `username` = ?', [username], function(err, res){
-                    if(res.length > 0){
-                        let sqlPassword = res[0]["password"];
-                        bcrypt.compare(pass, sqlPassword, function(err, res2) {
-                            if(res2 === true){  //Password is correct
-                                player.name = username;
-                                player.call("loginHandler", ["success"]);
-                                gm.auth.loadAccount(player);
-                            } else {    //Password is incorrect
+            mp.players.forEach(
+                (playerD) => {
+                    if(playerD.name === username && playerD.logged === true){
+                        player.call("loginHandler", ["logged"]);
+                    } else {
+                        gm.mysql.handle.query('SELECT `password` FROM `accounts` WHERE `username` = ?', [username], function(err, res){
+                            if(res.length > 0){
+                                let sqlPassword = res[0]["password"];
+                                bcrypt.compare(pass, sqlPassword, function(err, res2) {
+                                    if(res2 === true){  //Password is correct
+                                        player.name = username;
+                                        player.call("loginHandler", ["success"]);
+                                        gm.auth.loadAccount(player);
+                                    } else {    //Password is incorrect
+                                        player.call("loginHandler", ["incorrectinfo"]);
+                                    }
+                                });
+                            } else {
                                 player.call("loginHandler", ["incorrectinfo"]);
                             }
                         });
-                    } else {
-                        player.call("loginHandler", ["incorrectinfo"]);
                     }
-                });
-            } else {
-                player.call("loginHandler", ["logged"]);
-            }
+                }
+            );
             break;
         }
         case 1: //Register State
