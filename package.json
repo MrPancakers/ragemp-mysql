@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MrPancakers/ragemp-mysql-template.git"
+    "url": "git+https://github.com/MrPancakers/ragemp-mysql.git"
   },
   "author": "MrPancakers",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MrPancakers/ragemp-mysql-template/issues"
+    "url": "https://github.com/MrPancakers/ragemp-mysql/issues"
   },
-  "homepage": "https://github.com/MrPancakers/ragemp-mysql-template#readme",
+  "homepage": "https://github.com/MrPancakers/ragemp-mysql",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "mysql": "^2.15.0"
