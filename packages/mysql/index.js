@@ -9,5 +9,5 @@ gm.mysql.connect(function() { });
 
 mp.events.add("playerChat", (player, text) =>
 {
-	mp.players.broadcast(player.name + ": " + text);
+	mp.players.broadcast(`${player.name}: ${text}`);
 });

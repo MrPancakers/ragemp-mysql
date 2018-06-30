@@ -1,5 +1,5 @@
 mp.events.addCommand('money', (player) => {
-    player.outputChatBox("Money: " + player.money);
+    player.outputChatBox(`Money: $${player.money}`);
 });
 
 mp.events.addCommand('updatemoney', (player, _, num) => {
@@ -14,5 +14,5 @@ mp.events.addCommand('updatemoney', (player, _, num) => {
 });
 
 mp.events.addCommand('stats', (player) => {
-    player.outputChatBox("Money: " + player.money + " X: " + player.position.x + " Y: " + player.position.y + " Z: " + player.position.z);
+    player.outputChatBox(`Money: ${player.money} X: ${player.position.x} Y: ${player.position.y} Z: ${player.position.z}`);
 });
