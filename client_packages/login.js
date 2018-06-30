@@ -12,6 +12,7 @@ mp.events.add("loginHandler", (handle) => {
             browser1.destroy();
             mp.gui.chat.push("Login successful");
             mp.gui.chat.activate(true);
+            mp.gui.cursor.show(false, false);
             break;
         }
         case "registered":
@@ -19,6 +20,7 @@ mp.events.add("loginHandler", (handle) => {
             browser1.destroy();
             mp.gui.chat.push("Registration successful");
             mp.gui.chat.activate(true);
+            mp.gui.cursor.show(false, false);
             break;
         }
         case "incorrectinfo":
