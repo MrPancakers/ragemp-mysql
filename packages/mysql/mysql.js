@@ -40,25 +40,31 @@ module.exports =
 };
 
 mp.events.add("sendDataToServer", (player, username, pass, state) => {
+    let loggedAccount = mp.players.toArray().find(p => p.loggedInAs == username);
     switch(state){
         case 0: //Login State
         {
-            gm.mysql.handle.query('SELECT `password` FROM `accounts` WHERE `username` = ?', [username], function(err, res){
-                if(res.length > 0){
-                    let sqlPassword = res[0]["password"];
-                    bcrypt.compare(pass, sqlPassword, function(err, res2) {
-                        if(res2 === true){  //Password is correct
-                            player.name = username;
-                            player.call("loginHandler", ["success"]);
-                            gm.auth.loadAccount(player);
-                        } else {    //Password is incorrect
-                            player.call("loginHandler", ["incorrectinfo"]);
-                        }
-                    });
-                } else {
-                    player.call("loginHandler", ["incorrectinfo"]);
-                }
-            });
+            if(loggedAccount){
+                console.log("Logged in already.");
+                player.call("loginHandler", ["logged"]);
+            } else {
+                gm.mysql.handle.query('SELECT `password` FROM `accounts` WHERE `username` = ?', [username], function(err, res){
+                    if(res.length > 0){
+                        let sqlPassword = res[0]["password"];
+                        bcrypt.compare(pass, sqlPassword, function(err, res2) {
+                            if(res2 === true){  //Password is correct
+                                player.name = username;
+                                player.call("loginHandler", ["success"]);
+                                gm.auth.loadAccount(player);
+                            } else {    //Password is incorrect
+                                player.call("loginHandler", ["incorrectinfo"]);
+                            }
+                        });
+                    } else {
+                        player.call("loginHandler", ["incorrectinfo"]);
+                    }
+                });
+            }
             break;
         }
         case 1: //Register State
@@ -101,7 +107,7 @@ mp.events.add("sendDataToServer", (player, username, pass, state) => {
 });
 
 mp.events.add("playerQuit", (player) => {
-    player.setVariable('logged', false);
+    player.loggedInAs = "";
     gm.mysql.handle.query("UPDATE `accounts` SET money = ?, posX = ?, posY = ?, posZ = ? WHERE `username` = ?", [player.money, player.position.x, player.position.y, player.position.z, player.name], function(err,res){
         if(!err){
             console.log(`Account saved: ${player.name}`)
@@ -113,5 +119,5 @@ mp.events.add("playerQuit", (player) => {
 
 mp.events.add("playerJoin", (player) => {
     console.log(`${player.name} has joined.`);
-    player.setVariable('logged', false);
+    player.loggedInAs = "";
 });

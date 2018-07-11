@@ -1,3 +1,10 @@
+/*
+	Credits:
+		- MrPancakers
+		- Root
+		- Buckets
+*/
+
 require('./commands.js')
 
 global.gm = {};
