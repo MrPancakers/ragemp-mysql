@@ -9,8 +9,14 @@ function sendAccountInfo(state){
     } else {    //Register State
         let registerName = document.getElementById("registerName");
         let registerPass = document.getElementById("registerPass");
+        let registerPassCompare = document.getElementById("registerPass2");
         $("#registerBtn").hide();
     
-        mp.trigger("loginDataToServer", registerName.value, registerPass.value, state);
+        if(registerPass.value === registerPassCompare.value){
+            mp.trigger("loginDataToServer", registerName.value, registerPass.value, state);
+        } else {
+            $(".password-mismatch").show();
+            $("#registerBtn").show();
+        }
     }
 }

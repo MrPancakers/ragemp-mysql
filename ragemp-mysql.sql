@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2018 at 10:35 AM
+-- Generation Time: Sep 07, 2018 at 11:29 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -33,7 +33,9 @@ CREATE TABLE `accounts` (
   `money` int(11) NOT NULL DEFAULT '5000',
   `posX` float NOT NULL DEFAULT '5.5',
   `posY` float NOT NULL DEFAULT '5.5',
-  `posZ` float NOT NULL DEFAULT '71.5'
+  `posZ` float NOT NULL DEFAULT '71.5',
+  `health` float NOT NULL DEFAULT '100',
+  `armour` float NOT NULL DEFAULT '50'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --

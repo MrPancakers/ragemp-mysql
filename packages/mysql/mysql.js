@@ -107,14 +107,9 @@ mp.events.add("sendDataToServer", (player, username, pass, state) => {
 });
 
 mp.events.add("playerQuit", (player) => {
-    player.loggedInAs = "";
-    gm.mysql.handle.query("UPDATE `accounts` SET money = ?, posX = ?, posY = ?, posZ = ? WHERE `username` = ?", [player.money, player.position.x, player.position.y, player.position.z, player.name], function(err,res){
-        if(!err){
-            console.log(`Account saved: ${player.name}`)
-        } else (
-            console.log("ERROR: " + err)
-        )
-    });
+    if(player.loggedInAs != ""){
+        gm.auth.saveAccount(player);
+    }
 });
 
 mp.events.add("playerJoin", (player) => {

@@ -25,6 +25,9 @@
                     <div class="alert alert-danger short-info" role="alert">
                         <i class="fas fa-exclamation-circle"></i> Error: Username or Password is too short
                     </div>
+                    <div class="alert alert-danger password-mismatch" role="alert">
+                        <i class="fas fa-exclamation-circle"></i> Error: Your password didn't match
+                    </div>
                     <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab">Login</a>
@@ -49,6 +52,9 @@
                             </div>
                             <div class="input-group mb-3">
                                 <input type="password" class="form-control" id="registerPass" placeholder="Password (Min 5)">
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="password" class="form-control" id="registerPass2" placeholder="Repeat Password">
                             </div>
                             <button type="button" class="btn btn-success btn-lg btn-block" id="registerBtn" onclick="sendAccountInfo(1);">Register</button>
                         </div>
