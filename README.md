@@ -1,3 +1,8 @@
+# UPDATE (11/01/2021)
+I no longer recommend using this resource and instead recommend using this: https://github.com/RageMpOpenSource/RAGE-Accounts
+
+This gamemode was never a great solution but was intended as a starting point, this does work but if you want to benefit your server you either need to look into improving the gamemode or use the other one I've recommended.
+
 # RageMP MySQL Template
 This is a template of a very basic login/registration system you can implement into your gamemode to get started. This template only stores usernames and passwords(encrypted with BCrypt) so anything extra will need to be implemented yourself.
 
